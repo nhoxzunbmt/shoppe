@@ -4,7 +4,7 @@ import './App.css';
 import Person from './Person/Person'
 
 class App extends Component {
-  stage = {
+  state = {
     persons : [
       {
         name : 'Max 123' ,
@@ -14,7 +14,24 @@ class App extends Component {
         name : 'Loi Tran',
         age : 20
       }
-    ]
+    ],
+    title_page : 'List study'
+  }
+
+  switchClick = () => {
+    console.log('Was clicked')
+    this.setState({
+      persons : [
+          {
+            name : 'Max' ,
+            age : 1993
+          },
+          {
+            name : 'Loi Tran',
+            age : 2018
+          }
+      ]
+    })
   }
 
   render() {
@@ -23,10 +40,12 @@ class App extends Component {
         <header className="App-header">
           <h1 className="App-title">Welcome to Shoppe</h1>
         </header>
+        <button onClick={this.switchClick}>Click</button>
      
 
-        <Person name={this.stage.persons[0].name} age="19">I'm Dev</Person>
-        <Person name="Maximum" age="20"/>
+        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}>I'm Dev</Person>
+        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>I'm Account</Person>
+
       </div>
     );
   }

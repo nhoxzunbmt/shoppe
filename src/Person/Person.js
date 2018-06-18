@@ -2,9 +2,9 @@ import React from 'react';
 const full_name = 'Tran Thanh Loi'
 const person = (props) => {
     return <p>
-                <h1> 
+                <span> 
                 person {props.name} - age : {props.age} 
-                </h1>
+                </span>
                 <br/>
                 {props.children}
             </p>
