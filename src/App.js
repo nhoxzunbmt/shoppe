@@ -16,7 +16,8 @@ class App extends Component {
         age : 20
       }
     ],
-    title_page : 'List study'
+    title_page : 'List study',
+    showPersons : false
   }
 
   switchClick = (name) => {
@@ -50,18 +51,33 @@ class App extends Component {
     })
   }
 
+  togglePersonsHandler = () => {
+
+  }
+
   render() {
+
+    if(this.state.is_show_persons){
+      persons = ({
+
+      });
+    }
+
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Welcome to Shoppe</h1>
         </header>
-        <button onClick={() => this.switchClick('Love12')}>Click</button>
+
+        <button onClick={this.togglePersonsHandler}>Click</button>
+
      
 
         <Person changed={this.nameChangedHandler} name={this.state.persons[0].name} age={this.state.persons[0].age}>I'm Dev</Person>
         
         <Person changed={this.nameChangedHandler} name={this.state.persons[1].name} age={this.state.persons[1].age}>I'm Account</Person>
+
+    
 
       </div>
     );

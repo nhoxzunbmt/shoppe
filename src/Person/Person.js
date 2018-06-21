@@ -13,4 +13,4 @@ const person = (props) => {
                 {props.children}
             </p>
 }
-export  default person
+export  default person 
