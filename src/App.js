@@ -58,12 +58,14 @@ class App extends Component {
   }
 
   render() {
+    let persons = null;
 
-    // if(this.state.is_show_persons){
-    //   persons = ({
-
-    //   });
-    // }
+    
+    if(this.state.showPersons){
+      persons = (<div>
+        <Person changed={this.nameChangedHandler} name={this.state.persons[0].name} age={this.state.persons[0].age}>I'm Dev</Person>
+      </div>);
+    }
 
     return (
       <div className="App">
@@ -72,11 +74,7 @@ class App extends Component {
         <button onClick={this.togglePersonsHandler}>Click</button>
 
      
-        {this.state.showPersons ?
-        <div>
-          <Person changed={this.nameChangedHandler} name={this.state.persons[0].name} age={this.state.persons[0].age}>I'm Dev</Person>
-        </div> : null
-        }
+        { this.state.showPersons ? persons : null}
        
     
 
