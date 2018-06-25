@@ -2,15 +2,16 @@ import React from 'react';
 
 import './Person.css';
 
-const full_name = 'Tran Thanh Loi'
+
 const person = (props) => {
-    return <p class="Person">
+    return <div className="Person">
                 <span> 
                 person {props.name} - age : {props.age} 
                 </span>
                 <input type="text" onChange={props.changed} defaultValue={props.value}/>
+                {/* <button onClick={props.click}>Delete</button> */}
                 <br/>
                 {props.children}
-            </p>
+            </div>
 }
 export  default person 

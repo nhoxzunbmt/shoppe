@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 import Person from './Person/Person'
@@ -8,10 +7,12 @@ class App extends Component {
   state = {
     persons : [
       {
+        id : 1,
         name : 'Max 123' ,
         age : 19
       },
       {
+        id : 2,
         name : 'Loi Tran',
         age : 20
       }
@@ -57,27 +58,34 @@ class App extends Component {
       })
   }
 
+  deletePersonHandler = (personIndex) => {
+      console.log(personIndex);
+      const persons = [...this.state.persons];
+      persons.splice(personIndex,1);
+      this.setState({persons : persons});
+  }
+
   render() {
     let persons = null;
 
     
     if(this.state.showPersons){
       persons = (<div>
-        <Person changed={this.nameChangedHandler} name={this.state.persons[0].name} age={this.state.persons[0].age}>I'm Dev</Person>
+        {this.state.persons.map((person, index) => {
+          return <Person 
+          key={person.id} 
+          click={() => this.deletePersonHandler(index)} 
+          changed={(event) => this.nameChangedHandler(event, person.id)}
+          name={person.name} 
+          age={person.age}/>
+        })}
       </div>);
     }
 
     return (
-      <div className="App">
-
-
+      <div className="App">  
         <button onClick={this.togglePersonsHandler}>Click</button>
-
-     
         { this.state.showPersons ? persons : null}
-       
-    
-
       </div>
     );
   }
