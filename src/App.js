@@ -67,6 +67,19 @@ class App extends Component {
 
   render() {
     let persons = null;
+    let style = {
+      backgroundColor: 'green',
+      color : '#FFF'
+    }
+
+    let classes = []
+
+    if(this.state.persons.length <= 2){
+      classes.push('red')
+    }
+    if(this.state.persons.length <= 1){
+      classes.push('bold')
+    }
 
     
     if(this.state.showPersons){
@@ -84,7 +97,9 @@ class App extends Component {
 
     return (
       <div className="App">  
-        <button onClick={this.togglePersonsHandler}>Click</button>
+        <h1>List persons</h1>
+        <p className={classes.join(' ')}>all person in company</p>
+        <button style={style} onClick={this.togglePersonsHandler}>Show Persons</button>
         { this.state.showPersons ? persons : null}
       </div>
     );
